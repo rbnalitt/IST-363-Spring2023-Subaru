@@ -1,16 +1,18 @@
 @use '../sass/abstracts/mixins';
 
 .container {
-    background-color: tan;
+    //background-color: tan;
     margin: 0 auto;
     width: 100%;
-    @include mixins.breakpoint("sm") {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    @include mixins.breakpoint('tablet') {
         width: 700px;
     }
-    @include mixins.breakpoint("md") {
+    @include mixins.breakpoint('laptop') {
         width: 1000px;
     }
-    @include mixins.breakpoint("lg") {
+    @include mixins.breakpoint('desktop') {
         width: 1200px;
     }
 }

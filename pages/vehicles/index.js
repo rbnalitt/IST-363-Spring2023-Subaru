@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { getAllVehicles } from '../../lib/api';
 
 import Conatiner from '../../components/Container';
@@ -20,7 +22,13 @@ export async function getStaticProps() {
   }
 
 const VehiclesPage = ({vehiclesData}) => {
-    const vehicleTypes = filterAllVehicleTypes(vehiclesData);
+    const [activeVehicleType, setActiveVehicleType]= useState("all");
+    const vehicleTypes = ["all", ...filterAllVehicleTypes(vehiclesData)];
+    
+    const filteredVehicles = vehiclesData.filter((vehicle) => {
+      const { vehicleTypes } = vehicle.node.vehicleInformation;
+      return activeVehicleType === "all" || vehicleTypes.includes(activeVehicleType)
+    });
     return (
         <Layout>
           <Conatiner>
@@ -28,8 +36,15 @@ const VehiclesPage = ({vehiclesData}) => {
               level={1} 
               textAlign="center"
               >Vehicles</Heading>
-            <Tabs items={vehicleTypes} />
-            <Grid />
+            <Tabs 
+              items={vehicleTypes} 
+              activeItem={activeVehicleType}
+              changeHandler={setActiveVehicleType}
+              />
+            <Grid 
+              activeItem={activeVehicleType}
+              items={filteredVehicles}
+            />
           </Conatiner>
         </Layout>
     )

@@ -1,7 +1,27 @@
-const Tabs = ({ items }) => {
-    return <ul>
+import classnames from 'classnames/bind';
+
+import styles from './tabs.module.scss'
+
+let cx = classnames.bind(styles);
+
+const Tabs = ({ 
+    activeItem,
+    changeHandler,
+    items 
+}) => {
+    return <ul className={styles.tabs}>
         {items.map ((item, index) => {
-            return <li key={`tabItem${index}`}>{item}</li>
+            let tabItemClasses = cx({
+                tabItem: true,
+                active : activeItem === item
+            });
+            return <li 
+            key={`tabItem${index}`}
+            className={tabItemClasses}
+            onClick={() => {
+                changeHandler(item);
+            }}
+            >{item}</li>
         })}
         </ul>
 }
