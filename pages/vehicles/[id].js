@@ -1,5 +1,5 @@
 import ColorPicker from '../../components/ColorPicker';
-import Conatiner from '../../components/Container';
+import Container from '../../components/Container';
 import Image from 'next/image';
 import Layout from '../../components/Layout';
 import Showcase from '../../components/Showcase';
@@ -47,9 +47,9 @@ export async function getStaticPaths() {
           headline={showcase.headline ? showcase.headline : null}
           backgroundImage={featuredImage ? featuredImage.node : null}
         />
-        <Conatiner>
+        <Container>
           <TrimPicker trimLevels={trimLevels} />
           <ColorPicker vehicleColors={vehicleColors}/>
-        </Conatiner>
+        </Container>
     </Layout>
   }

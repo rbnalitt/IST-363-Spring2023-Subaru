@@ -1,10 +1,23 @@
+@use '../sass/abstracts/vars';
+
 .colorpicker {
     background-color: limegreen;
     margin-bottom: 2rem;
     padding: 1rem;
 }
+.swatches {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .5rem;
+    margin-bottom: 1rem;
+}
 .swtach {
     width: 3rem;
     height: 3rem;
-    background-color: yellow;
+    //background-color: yellow;
+    transition: all .5s;
+    &.active {
+        border: 2px solid vars.$color_blue;
+    }
 }
