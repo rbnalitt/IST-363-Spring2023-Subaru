@@ -1,3 +1,4 @@
+import chroma from "chroma-js";
 import classnames from 'classnames/bind';
 import { useState } from 'react';
 import Heading from './Heading';
@@ -20,8 +21,9 @@ const ColorPicker = ({ vehicleColors }) => {
             {vehicleColors?.map((vehicleColor, index) => {
                 const { swatch, image } = vehicleColor;
                 return <Swatch 
+                    key={`swatch-${index}`}
                     hexValue={swatch.swatchInformation.hexValue}
-                    isActive{index === activeColorIndex ? true : false}
+                    isActive={index === activeColorIndex ? true : false}
                     clickHandler={() => {
                         setActiveColorIndex(index);
                     }}
@@ -44,9 +46,11 @@ const Swatch = ({
         swatch: true,
         active: isActive === true
     });
+    let darkerColor = chroma (hexValue).darken().hex();
+    //console.log({darkerColor});
     return <div 
     className={swatchClasses}
-    style={{ backgroundColor: hexValue }}
+    style={{ background: `linear-Gradient(${hexValue}, ${darkerColor})`}}
     onClick={clickHandler}
     ></div>
 }
