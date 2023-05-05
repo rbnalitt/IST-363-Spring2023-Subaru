@@ -46,11 +46,11 @@ const Swatch = ({
         swatch: true,
         active: isActive === true
     });
-    let darkerColor = chroma (hexValue).darken().hex();
+    let darkerColor = chroma(hexValue).darken().hex();
     //console.log({darkerColor});
     return <div 
     className={swatchClasses}
-    style={{ background: `linear-Gradient(${hexValue}, ${darkerColor})`}}
+    style={{ background: `linear-gradient(${hexValue}, ${darkerColor})`}}
     onClick={clickHandler}
     ></div>
 }
