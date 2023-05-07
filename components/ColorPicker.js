@@ -1,3 +1,4 @@
+import { motion, AnimatePresence } from "framer-motion";
 import chroma from "chroma-js";
 import classnames from 'classnames/bind';
 import { useState } from 'react';
@@ -9,14 +10,27 @@ let cx = classnames.bind(styles);
 
 const ColorPicker = ({ vehicleColors }) => {
     const [activeColorIndex, setActiveColorIndex] = useState(0);
+
     return <section className={styles.colorpicker}>
-        <Image
-            src={vehicleColors[activeColorIndex].image.sourceUrl}
-            alt={vehicleColors[activeColorIndex].image.altText}
-            width={vehicleColors[activeColorIndex].image.mediaDetails.width}
-            height={vehicleColors[activeColorIndex].image.mediaDetails.height}
-            className={styles.large_image}
-        />
+        <AnimatePresence> 
+        <div className={styles.large_image_relative_parent}> 
+        <motion.div 
+            key={vehicleColors[activeColorIndex].image.sourceUrl}
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -50 }}
+            classnames={styles.large_image_wrapper}
+        >
+            <Image
+                src={vehicleColors[activeColorIndex].image.sourceUrl}
+                alt={vehicleColors[activeColorIndex].image.altText}
+                width={vehicleColors[activeColorIndex].image.mediaDetails.width}
+                height={vehicleColors[activeColorIndex].image.mediaDetails.height}
+                className={styles.large_image}
+            />
+        </motion.div>
+        </div>
+        </AnimatePresence>
         <div className={styles.swatches}>
             {vehicleColors?.map((vehicleColor, index) => {
                 const { swatch, image } = vehicleColor;
@@ -38,8 +52,8 @@ const ColorPicker = ({ vehicleColors }) => {
     </section>
 }
 const Swatch = ({ 
-    hexValue, 
     clickHandler,
+    hexValue, 
     isActive
 }) => {
     let swatchClasses = cx({

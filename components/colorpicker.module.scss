@@ -2,10 +2,27 @@
 @use '../sass/abstracts/mixins';
 
 .colorpicker {
-    background-color: limegreen;
+    //background-color: limegreen;
     margin-bottom: 2rem;
     padding: 1rem;
     text-align: center;
+    .large_image_relative_parent {
+        position: relative;
+        //background-color: pink;
+        height: 0;
+        padding-bottom: calc((607 / 1150) * 100%);
+        @include mixins.breakpoint(laptop) {
+            padding-bottom: calc((52 * 700) / 100);
+        }
+    }
+    .large_image_wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        //background-color: red;
+        width: 100%;
+    }
     .large_image {
         width: 100%;
         height: auto;
