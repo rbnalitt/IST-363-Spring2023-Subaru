@@ -2,17 +2,18 @@
 @use '../sass/abstracts/mixins';
 
 .colorpicker {
-    //background-color: limegreen;
+   // background-color: limegreen;
     margin-bottom: 2rem;
     padding: 1rem;
     text-align: center;
     .large_image_relative_parent {
         position: relative;
-        //background-color: pink;
+       // background-color: pink;
         height: 0;
+        //1150 × 607
         padding-bottom: calc((607 / 1150) * 100%);
         @include mixins.breakpoint(laptop) {
-            padding-bottom: calc((52 * 700) / 100);
+           padding-bottom: calc((52% * 700px) / 100%);
         }
     }
     .large_image_wrapper {
@@ -31,6 +32,7 @@
         }
     }
 }
+
 .swatches {
     display: flex;
     flex-wrap: wrap;
@@ -38,7 +40,7 @@
     gap: .5rem;
     margin-bottom: 1rem;
 }
-.swtach {
+.swatch {
     width: 3rem;
     height: 3rem;
     //background-color: yellow;

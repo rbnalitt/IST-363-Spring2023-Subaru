@@ -1,3 +1,4 @@
+import CallToAction from '../../components/CallToAction';
 import ColorPicker from '../../components/ColorPicker';
 import Container from '../../components/Container';
 import Image from 'next/image';
@@ -51,5 +52,6 @@ export async function getStaticPaths() {
           <TrimPicker trimLevels={trimLevels} />
           <ColorPicker vehicleColors={vehicleColors}/>
         </Container>
+        <CallToAction vehicleName={title}/>
     </Layout>
   }
